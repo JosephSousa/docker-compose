@@ -1,0 +1,15 @@
+version: '2'
+
+services: 
+ postgres: 
+   container_name: banco
+   build: ./postgres
+   image: joseph/banco
+   ports: 
+   - "5432:5432"
+ web:
+   container_name: app
+   build: .
+   image: joseph/app
+   links: 
+    - "postgres:banco-loja"
